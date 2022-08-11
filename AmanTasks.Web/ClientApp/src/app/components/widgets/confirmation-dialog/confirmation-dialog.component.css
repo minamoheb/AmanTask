@@ -1,0 +1,95 @@
+
+
+.PopupBody p .redMsg {
+  color: red !important;
+}
+.redMsg {
+  color: red !important;
+}
+.custom-alert {
+  width: 300px;
+}
+
+.modal-backdrop.in {
+  opacity: 0.9;
+}
+
+.modal-body {
+/*  background-color: whitesmoke;*/
+  border-radius: 11px;
+}
+
+.modal {
+  background-color: rgba(58, 51, 51, 0.4);
+  padding-top: 5px;
+
+}
+/*.modal-content {
+  background-color: #fbfbfb;
+  border: 1px solid #f0f0f0;
+  font-family: Arial,sans-serif;
+  width: 346px;
+  padding: 15px 15px 5px;
+  border-radius: 6px;
+  text-align: center;
+  position: fixed;*/
+  /* right: 20px; */
+  /*top: 20px;
+  margin-left: 0;
+  margin-top: 0;
+  overflow: hidden;
+  z-index: 99999;
+}*/
+.modal-content {
+  background-color: #fbfbfb;
+  border: 1px solid #f0f0f0;
+  font-family: Arial,sans-serif;
+  /* width: 346px; */
+  /* height: 200px; */
+  padding: px 15px 5px;
+  border-radius: 6px;
+  text-align: center;
+  /* position: fixed; */
+  top: 20px;
+  margin-left: 0;
+  margin-top: 0;
+  overflow: hidden;
+  z-index: 99999;
+}
+.confirm-message {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 0px;
+  margin-top: 5px;
+}
+
+.confirm-button {
+  text-align: center;
+  margin: 15px 0px 15px 0px;
+}
+
+.btn-no {
+  background-color: #f4516c;
+  color: white;
+}
+
+.btn-yes {
+  background-color: #3c8dbc;
+  color: white;
+  /* background-color: #dbdbdb; */
+  color: #fff;
+  border: none !important;
+  box-shadow: none !important;
+  min-width: 130px;
+  font-size: 14px;
+  animation: none;
+  font-weight: 100;
+  border-radius: 3px;
+  padding: 8px 10px;
+  margin: 0 7px;
+  cursor: pointer;
+}
+.show-animate {
+  animation: showWizAlert .3s;
+}

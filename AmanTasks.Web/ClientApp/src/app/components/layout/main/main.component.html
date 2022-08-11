@@ -1,0 +1,29 @@
+<app-container>
+
+    <div body class="wrapper">
+   
+
+      <div class="menu-flex" id="menu_id">
+      <app-navbar></app-navbar>
+      </div>
+      
+      <section  class="siteMap col-md-12 form-group padding content-header">
+        <ol class="breadcrumb">
+          <!-- <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li class="active">Dashboard</li> -->
+          <li style="font-weight: bold;" [ngClass]="{'active':last}" *ngFor="let item of breadcrumbList;let first = first;let last=last">
+
+            <i *ngIf="first" class="fa fa-dashboard"></i>
+            {{item|translate}}
+          </li>
+        </ol>
+      </section>
+      
+          <router-outlet>
+          </router-outlet>
+      
+        <!-- </div>
+      </div> -->
+    </div>
+ 
+  </app-container>

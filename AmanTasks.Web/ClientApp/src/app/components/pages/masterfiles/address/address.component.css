@@ -1,0 +1,60 @@
+.mat-header-row {
+  background-color: #3c8dbc;
+  color: #fff;
+  border: 1px solid transparent;
+  height: 45px;
+}
+
+.mat-header-cell {
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  /* padding-bottom: 10px;
+      padding-top: 10px; */
+  padding: 5px 0px 5px 8px !important;
+}
+
+.mat-sort-header-arrow {
+  color: #fff;
+}
+
+.mat-sort-header {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+}
+
+.mat-cell {
+  /*  width: 250px;*/
+  font-size: 14px;
+}
+
+.actionbtn {
+  border: 1px solid #00c0ef;
+  background: #00c0ef;
+  cursor: pointer;
+  text-align: center;
+  line-height: 30px;
+  color: #fff;
+  line-height: 1.5;
+  border-radius: 2px;
+  position: relative;
+  left: 10px;
+  top: 10px;
+}
+
+.modal-dialog.modal-notify .heading {
+  margin: 0;
+  padding: .3rem;
+  color: #fff;
+  /*    font-size: 1.80rem;*/
+}
+/* Important part */
+.modal-dialog {
+  overflow-y: initial !important
+}
+
+.modal-body {
+  /*  height: 80vh;*/
+  overflow-y: auto;
+}

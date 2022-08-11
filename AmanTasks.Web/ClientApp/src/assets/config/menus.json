@@ -1,0 +1,34 @@
+{
+  "menus": [
+    {
+      "name": "Dashboard",
+      "routerlink": "/masterfiles/Dashboard",
+      "class": "fa fa-dashboard",
+      "prgcode": "ERP0000"
+    },
+    {
+      "name": "MenuTittleMasterFile",
+      "class": "fa fa-circle-o",
+      "submenu": [
+
+        {
+          "name": "AddressMenu",
+          "routerlink": "/masterfiles/address",
+          "class": "fa fa-cube"
+        },
+
+        {
+          "name": "PersonMenu",
+          "routerlink": "/masterfiles/person",
+          "class": "fa fa-cube"
+        }
+
+
+
+      ]
+    }
+
+
+
+  ]
+}

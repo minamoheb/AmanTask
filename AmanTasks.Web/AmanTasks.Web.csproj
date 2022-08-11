@@ -1,0 +1,105 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <IsPackable>false</IsPackable>
+    <SpaRoot>ClientApp\</SpaRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+
+    <!-- Set this to true if you enable server-side prerendering -->
+    <BuildServerSideRenderer>false</BuildServerSideRenderer>
+    <RootNamespace>AmanTasks.Web</RootNamespace>
+    <UserSecretsId>30a4ae9d-6948-4912-8e08-72577f1f13db</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.7.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\src\app\components\pages\package\**" />
+    <Compile Remove="ClientApp\src\app\components\pages\tariffdata\**" />
+    <Compile Remove="ClientApp\src\app\models\changePass\**" />
+    <Compile Remove="ClientApp\src\app\models\global\**" />
+    <Compile Remove="ClientApp\src\app\services\authentication\**" />
+    <Compile Remove="ClientApp\src\desgin_assets\**" />
+    <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\src\app\components\pages\package\**" />
+    <Content Remove="ClientApp\src\app\components\pages\tariffdata\**" />
+    <Content Remove="ClientApp\src\app\models\changePass\**" />
+    <Content Remove="ClientApp\src\app\models\global\**" />
+    <Content Remove="ClientApp\src\app\services\authentication\**" />
+    <Content Remove="ClientApp\src\desgin_assets\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\components\pages\package\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\components\pages\tariffdata\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\models\changePass\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\models\global\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\services\authentication\**" />
+    <EmbeddedResource Remove="ClientApp\src\desgin_assets\**" />
+    <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\src\app\components\pages\package\**" />
+    <None Remove="ClientApp\src\app\components\pages\tariffdata\**" />
+    <None Remove="ClientApp\src\app\models\changePass\**" />
+    <None Remove="ClientApp\src\app\models\global\**" />
+    <None Remove="ClientApp\src\app\services\authentication\**" />
+    <None Remove="ClientApp\src\desgin_assets\**" />
+    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\src\app\CustomTranslateLoader.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\components\layout\" />
+    <Folder Include="ClientApp\src\app\interseptors\" />
+    <Folder Include="wwwroot\TATSONCE\Customers\TEBAS_TATS_ONCE\Attachment\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aman.Core\Aman.Core.csproj" />
+    <ProjectReference Include="..\Aman.Services\Aman.Services.csproj" />
+    <ProjectReference Include="..\RepositoryLayer\RepositoryLayer.csproj" />
+  </ItemGroup>
+
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+  </Target>
+
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build:ssr -- prod" Condition=" '$(BuildServerSideRenderer)' == 'true' " />
+
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
+      <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRenderer)' == 'true'" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
+</Project>

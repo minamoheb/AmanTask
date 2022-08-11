@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="AdminHelperManager\**" />
+    <Compile Remove="FollowUpConnection\**" />
+    <Compile Remove="IdentityDataAccess\**" />
+    <Compile Remove="Units\**" />
+    <EmbeddedResource Remove="AdminHelperManager\**" />
+    <EmbeddedResource Remove="FollowUpConnection\**" />
+    <EmbeddedResource Remove="IdentityDataAccess\**" />
+    <EmbeddedResource Remove="Units\**" />
+    <None Remove="AdminHelperManager\**" />
+    <None Remove="FollowUpConnection\**" />
+    <None Remove="IdentityDataAccess\**" />
+    <None Remove="Units\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.0" />
+    <PackageReference Include="System.ServiceModel.Http" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aman.Core\Aman.Core.csproj" />
+    <ProjectReference Include="..\RepositoryLayer\RepositoryLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Data.DataSetExtensions">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Data.DataSetExtensions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

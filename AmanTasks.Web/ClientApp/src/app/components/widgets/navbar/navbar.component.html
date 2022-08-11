@@ -1,0 +1,128 @@
+<!-- <div class="slimScroll" id="slimScroll"> -->
+<aside class="main-sidebar">
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+    <!-- Sidebar user panel -->
+    <div class="user-panel">
+      <div class="labeltxt image">
+        <img src="assets/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+      </div>
+      <div class="labeltxt info">
+        <p>{{'Admin'|translate}}</p>
+
+        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+      </div>
+    </div>
+
+    
+ 
+          <ul class="sidebar-menu" data-widget="tree">
+             <li class="header">      {{'MAINNAVIGATION'|translate}}</li> 
+            
+           
+         <li class="treeview" *ngFor="let item of menuData;let j = index;" class="treeview" id="treeview">
+              <a [routerLink]="item.routerlink?[item.routerlink]:[]">
+                <i class={{item.class}}></i>
+                <span style="font-weight: bold;padding: 5px;">{{item.name|translate}}</span>
+             
+              </a>
+              <ul class="treeview-menu" id="ultreeview">
+                <li *ngFor="let smn of item.submenu" class="treeview">
+
+
+                    <a style="font-size: 15px;font-weight:bold;" [routerLink]="smn.routerlink?[smn.routerlink]:[]">
+                      <i class="fa fa-cube"></i>{{smn.name|translate}}
+                    </a>
+                
+
+                </li>
+
+              </ul>
+            </li> 
+
+       
+      
+
+   <!-- <li class="treeview">
+        <a href="#">
+          <i class="fa fa-dashboard"></i> <span>Master Files</span>   <span class="label label-primary pull-right">12</span>
+        
+        </a>
+        <ul class="treeview-menu" id="ultreeview">
+          <li class="active"><a routerLink="/masterfiles/Company"><i class="fa fa-circle-o"></i>Companies Information</a></li>
+          <li><a routerLink="masterfiles/AreaName"><i class="fa fa-circle-o"></i> Area Name</a></li>
+          <li><a routerLink="masterfiles/Routes"><i class="fa fa-circle-o"></i> Routes Location Data</a></li>
+          <li><a routerLink="masterfiles/PriceList"><i class="fa fa-circle-o"></i> Price List</a></li>
+          <li><a routerLink="masterfiles/city"><i class="fa fa-circle-o"></i> City</a></li>
+          <li><a routerLink="masterfiles/ZoneData"><i class="fa fa-circle-o"></i> Region Data </a></li>
+          <li><a routerLink="masterfiles/Department"><i class="fa fa-circle-o"></i> Departments</a></li>
+          <li><a routerLink="masterfiles/Position"><i class="fa fa-circle-o"></i> Positions</a></li>
+          <li><a routerLink="masterfiles/Qualification"><i class="fa fa-circle-o"></i> Qualification</a></li>
+          <li><a routerLink="masterfiles/EmpInfo"><i class="fa fa-circle-o"></i> Employee Data </a></li>
+          <li><a routerLink="masterfiles/Attendencegroup"><i class="fa fa-circle-o"></i> Attendence Group </a></li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-cutlery"></i>
+          <span>Restaurants Data</span>
+          <span class="label label-primary pull-right">4</span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a routerLink="Restaurantinfo/Info"><i class="fa fa-circle-o"></i> Restaurants Branches</a></li>
+          <li><a routerLink="Restaurantinfo/branches"><i class="fa fa-circle-o"></i> Contract Information</a></li>
+          <li><a routerLink="Restaurantinfo/branches"><i class="fa fa-circle-o"></i> Contract Terminated </a></li>
+          <li><a routerLink="Restaurantinfo/branches"><i class="fa fa-circle-o"></i> Offer Detail </a></li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-truck"></i>
+          <span>HR Data</span>
+          <span class="label label-primary pull-right">11</span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a routerLink="HRInfo/Departments"><i class="fa fa-circle-o"></i>Attendence Data</a></li>
+          <li><a routerLink="HRInfo/Departments"><i class="fa fa-circle-o"></i>Vacancies Data</a></li>
+          <li><a routerLink="HRInfo/Departments"><i class="fa fa-circle-o"></i>Overtime Data</a></li>
+          <li><a routerLink="HRInfo/Departments"><i class="fa fa-circle-o"></i>Bonus Data</a></li>
+          <li><a routerLink="HRInfo/Departments"><i class="fa fa-circle-o"></i>Bonus Group</a></li>
+          <li><a routerLink="HRInfo/employeeallowance"><i class="fa fa-circle-o"></i>Annaul Increases</a></li>
+          <li><a routerLink="HRInfo/Departments"><i class="fa fa-circle-o"></i>Employee Penalities</a></li>
+          <li><a routerLink="HRInfo/postioninfo"><i class="fa fa-circle-o"></i>Addation and Deduction Code</a></li>
+          <li><a routerLink="HRInfo/postioninfo"><i class="fa fa-circle-o"></i> Deduction Data</a></li>
+          <li><a routerLink="HRInfo/employeeinfo"><i class="fa fa-circle-o"></i>Employee Terminated</a></li>
+
+        </ul>
+      </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-truck"></i>
+          <span>Transaction</span>
+          <span class="label label-primary pull-right">3</span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a routerLink="HRInfo/Departments"><i class="fa fa-circle-o"></i>Debt Collection</a></li>
+          <li><a routerLink="HRInfo/Departments"><i class="fa fa-circle-o"></i>ٌRestaurant Transaction</a></li>
+          <li><a routerLink="HRInfo/Departments"><i class="fa fa-circle-o"></i>representative Transaction</a></li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-lock"></i>
+          <span>System Data</span>
+          <span class="label label-primary pull-right">2</span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i>User Authorization</a></li>
+          <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Change Password</a></li>
+
+       
+        </ul>
+      </li>  -->
+
+    </ul>
+  </section>
+  <!-- /.sidebar -->
+</aside>
+<!-- </div> -->

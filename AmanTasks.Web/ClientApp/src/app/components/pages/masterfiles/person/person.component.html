@@ -1,0 +1,154 @@
+  <!-- Right side column. Contains the navbar and content of the page -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      {{'HdrPerson'|translate}}
+
+    </h1>
+
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h5>     <i class="fa fa-info-circle"></i>   {{'HdrPerson'|translate}}</h5>
+
+          </div><!-- /.box-header -->
+
+          <div class="card-body">
+            <div fxLayout="row" fxLayoutAlign="space-around center">
+
+              <button mdbWavesEffect class="btnaddnew" data-toggle="modal" data-target="#basicExample" (click)="addnew()"><i class="fa fa-plus" style="margin: 5px;"></i>{{'AddNew'|translate}}</button>
+
+
+
+            </div>
+
+            <div style="margin-top:70px;margin:auto">
+              <table mat-table [dataSource]="dataSource" matSort class="table table-bordered table-hover dataTable mat-elevation-z8">
+                <ng-container matColumnDef="code" hidden>
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'PersonCode'|translate}} </th>
+                  <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'PersonName'|translate}} </th>
+                  <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="address">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'AddressName'|translate}} </th>
+                  <td mat-cell *matCellDef="let element"> {{element.addressName}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="email">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'Email'|translate}} </th>
+                  <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Action">
+                  <th mat-header-cell *matHeaderCellDef>  {{'Actions'|translate}} </th>
+                  <td mat-cell *matCellDef="let element">
+                    <div class="col-md-6" style="margin: auto;">
+                      <div class="row">
+                        <div class="col-md-3">
+                          <button class="actionbtn" (click)="getpersondatabyid(element.id)"><i class="fa fa-edit"></i> </button>
+                        </div>
+                        <div class="col-md-3">
+                          <button class="actionbtn" (click)="deleteaction(element.id)" style="margin-left: 10px;"> <i class="fa fa-trash"></i> </button>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+
+              <!-- Angular 8 pagination -->
+              <mat-paginator class="pagination" [pageSizeOptions]="[5, 15, 25,50]" showFirstLastButtons></mat-paginator>
+            </div>
+
+
+          </div><!-- /.box-body -->
+        </div><!-- /.box -->
+
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </section><!-- /.content -->
+  <div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog  modal-notify modal-success" role="document">
+      <!--Content-->
+      <div class="modal-content">
+        <!--Header-->
+        <div class="modal-header" style="background-color: #036474;">
+          <p class="heading lead">{{'HdrAddress'|translate}}</p>
+
+          <!--<button type="button" style="margin-top: -25px;" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+            <span aria-hidden="true" class="white-text">&times;</span>
+          </button>-->
+        </div>
+
+        <!--Body-->
+        <div class="modal-body">
+          <form [formGroup]="formitem" class="form-horizontal" (ngSubmit)="onSubmit()">
+
+            <div class="form-group col-md-12">
+              <div class="form-group col-md-12" style="text-align:left;padding-top:10px; ">
+                <label class="col-form-label" style="color:#808080">{{ 'PersonCode' | translate }}</label>
+                <input class="form-control" id="id" disabled formControlName="id" placeholder="{{ 'PersonCode' | translate }}" type="text">
+              </div>
+
+              <div class="form-group col-md-12" style="text-align:left;padding-top:10px; ">
+                <label class="padding" style=" margin-left: 5px; color:#000;padding-top:10px; ">{{'PersonName'|translate}}</label>
+                <font style="color: red;">*</font>
+                <input class="form-control" id="name" formControlName="name" placeholder="{{ 'PersonName' | translate }}" type="text">
+                <div *ngIf="submitted && f.name.errors" class="alert alert-danger mt-3 mb-0" style="margin-bottom: 10px !important;">
+                  <div *ngIf="f.name.errors.required" class="">{{ 'MsgPersonValidate' | translate }}</div>
+                </div>
+              </div>
+              <div class="form-group col-md-12" style="text-align:left">
+                <label class="padding" style=" margin-left: 5px; color:#000">{{'Address'|translate}}</label>
+                <font style="color: red;">*</font>
+                <select id="addressId" formControlName="addressId" class="form-select">
+                  <option [value]="null" selected disabled>-Select Address-</option>
+                  <option *ngFor="let address of addressdata;index as i" [value]="address.id">{{address.addressName}}</option>
+                </select>
+                <div *ngIf="submitted && f.addressId.errors" class="alert alert-danger mt-3 mb-0" style="margin-bottom: 10px !important;">
+                  <div *ngIf="f.addressId.errors.required" class="">{{'MsqaddressRequiredValidate'|translate}}  </div>
+                </div>
+              </div>
+
+              <div class="form-group col-md-12" style="text-align:left;padding-top:10px; ">
+                <label class="padding" style=" margin-left: 5px; color:#000;padding-top:10px; ">{{'Email'|translate}}</label>
+                <input class="form-control" id="email" formControlName="email" placeholder="{{ 'Email' | translate }}" type="text">
+                <div *ngIf="submitted && f.email.errors" class="alert alert-danger mt-3 mb-0" style="margin-bottom: 10px !important;">
+                  <div *ngIf="f.email.errors.email">{{'MsgEmailRequiredValidate'|translate}} </div>
+                </div>
+              </div>
+
+
+              </div>
+          </form>
+          <!--Footer-->
+
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button (click)="saveaction()" class="btn btn-primary my-4">{{ 'Save' | translate }}</button>
+
+          <button (click)="CancelFunc()" style="margin-top: 10px;" class="btn btn-primary my-4"><i class="fa fa-times-circle-o" style="margin:5px;color:#fff"></i> {{ 'Cancel' | translate }} </button>
+
+        </div>
+
+
+
+      </div>
+      <!--/.Content-->
+    </div>
+  </div>
+</div>

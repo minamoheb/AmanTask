@@ -1,0 +1,17 @@
+{
+  "AddressMenu": "Address",
+  "HdrAddress": "Address Information",
+  "HdrPerson": "Person Information",
+  "AddressCode": "Address Code",
+  "AddressName": "Address Name",
+  "PersonCode": "Person Code",
+  "PersonName": "Person Name",
+  "Email": "Email",
+  "MsgPersonValidate": "Person Name is required",
+  "MsgEmailRequiredValidate": "Email must be a valid email address",
+  "MsqaddressRequiredValidate": "Address is required",
+  "MSGSuccess": "Operation Completed Successfully",
+  "MSGFail": "MSG-Fail: The operation was not completed successfully",
+  "MenuTittleMasterFile": "Master Files",
+  "PersonMenu": "Person"
+}
